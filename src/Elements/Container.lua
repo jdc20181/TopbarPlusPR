@@ -68,7 +68,7 @@ return function(Icon)
 		ySizeOffset = -2
 		if isConsoleScreen then
 			startInset = 10
-			yDownOffset = -9
+			yDownOffset = 0 ---9
 		end
 		if GuiService.TopbarInset.Height == 0 and not hasBecomeOldTheme then
 			yDownOffset += 13
