@@ -134,7 +134,7 @@ return function(Icon)
 	
 	local screenGuiClipped = screenGui:Clone()
 	screenGuiClipped.Name = screenGuiClipped.Name.."Clipped"
-	screenGuiClipped.DisplayOrder = Icon.baseDisplayOrder + 1
+	screenGuiClipped.DisplayOrder = (Icon.baseDisplayOrder + 1)
 	Icon.baseDisplayOrderChanged:Connect(function()
 		screenGuiClipped.DisplayOrder = (Icon.baseDisplayOrder + 1)
 	end)
@@ -144,7 +144,7 @@ return function(Icon)
 	screenGuiCenterClipped.Name = screenGuiCenterClipped.Name.."Clipped"
 	screenGuiCenterClipped.DisplayOrder = (Icon.baseDisplayOrder + 1)
 	Icon.baseDisplayOrderChanged:Connect(function()
-		screenGuiCenterClipped.DisplayOrder = Icon.baseDisplayOrder + 1
+		screenGuiCenterClipped.DisplayOrder = (Icon.baseDisplayOrder + 1)
 	end)
 	container[screenGuiCenterClipped.Name] = screenGuiCenterClipped
 	
