@@ -209,6 +209,14 @@ icon:setTextSize(number, iconState)
 The size of the icon labels' text. The default value is ``16``.
 
 ----
+#### setTextColor
+{chainable} {toggleable}
+```lua
+icon:setTextColor(color, iconState)
+```
+The color of the icon labels' text.
+
+----
 #### setTextFont
 {chainable} {toggleable}
 ```lua

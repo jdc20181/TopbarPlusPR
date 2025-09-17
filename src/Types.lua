@@ -225,6 +225,14 @@ type Methods = {
 			return nil :: any
 		end
 	),
+	setTextColor: typeof(
+		--[[
+			The color of the icon labels' text
+		]]
+		function(self: Icon, color: Color3, iconState: IconState?): Icon
+			return nil :: any
+		end
+	),
 	setTextFont: typeof(
 		--[[
 			Sets the labels FontFace.
