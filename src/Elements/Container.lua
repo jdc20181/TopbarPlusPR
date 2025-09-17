@@ -6,6 +6,7 @@ return function(Icon)
 	-- https://devforum.roblox.com/t/bug/2973508/7
 	local GuiService = game:GetService("GuiService")
 	local Players =  game:GetService("Players")
+	local UserInputService = game:GetService("UserInputService")
 	local container = {}
 	local Signal = require(script.Parent.Parent.Packages.GoodSignal)
 	local insetChanged = Signal.new()
@@ -14,14 +15,18 @@ return function(Icon)
 	local yDownOffset = 0
 	local ySizeOffset = 0
 	local checkCount = 0
+	local isConsoleScreen = false
+	local isUsingVR = false
 	local function checkInset(status)
 		local currentHeight = GuiService.TopbarInset.Height
 		local isOldTopbar = currentHeight <= 36
-		local isConsoleScreen = GuiService:IsTenFootInterface()
+		
 
 		-- These additional checks are needed to ensure *it is actually* the old topbar
 		-- and not a client which takes a really long time to load
 		-- There's unfortunately no APIs to do this a prettier way
+		isConsoleScreen = GuiService:IsTenFootInterface()
+		isUsingVR = UserInputService.VREnabled
 		Icon.isOldTopbar = isOldTopbar
 		checkCount += 1
 		if currentHeight == 0 and status == nil then
@@ -40,7 +45,7 @@ return function(Icon)
 		end
 
 		-- Conver to old theme if verified
-		if Icon.isOldTopbar and not isConsoleScreen and hasBecomeOldTheme == false and (currentHeight ~= 0 or status == "ForceConvertToOld") then
+		if Icon.isOldTopbar and not isConsoleScreen and not isUsingVR and hasBecomeOldTheme == false and (currentHeight ~= 0 or status == "ForceConvertToOld") then
 			hasBecomeOldTheme = true
 			task.defer(function()
 				-- If oldtopbar, apply the Classic theme
@@ -109,8 +114,10 @@ return function(Icon)
 	holders.Name = "Holders"
 	holders.BackgroundTransparency = 1
 	insetChanged:Connect(function()
+		local holderY = if isUsingVR then 36 else 56
+		local holderSize = if isConsoleScreen then UDim2.new(1, 0, 0, holderY) else UDim2.new(1, 0, 1, ySizeOffset)
 		holders.Position = UDim2.new(0, 0, 0, yDownOffset)
-		holders.Size = UDim2.new(1, 0, 1, ySizeOffset)
+		holders.Size = holderSize
 	end)
 	holders.Visible = true
 	holders.ZIndex = 1

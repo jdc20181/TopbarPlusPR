@@ -599,6 +599,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#settextcolor" class="md-nav__link">
+    setTextColor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#settextfont" class="md-nav__link">
     setTextFont
   </a>
@@ -727,6 +734,13 @@
           <li class="md-nav__item">
   <a href="#setmenu" class="md-nav__link">
     setMenu
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setfixedmenu" class="md-nav__link">
+    setFixedMenu
   </a>
   
 </li>
@@ -1131,6 +1145,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#settextcolor" class="md-nav__link">
+    setTextColor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#settextfont" class="md-nav__link">
     setTextFont
   </a>
@@ -1259,6 +1280,13 @@
           <li class="md-nav__item">
   <a href="#setmenu" class="md-nav__link">
     setMenu
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setfixedmenu" class="md-nav__link">
+    setFixedMenu
   </a>
   
 </li>
@@ -1558,6 +1586,12 @@ How stretched the image will appear. The default value is <code>1</code> (a perf
 </code></pre></div>
 The size of the icon labels' text. The default value is <code>16</code>.</p>
 <hr />
+<h4 id="settextcolor">setTextColor<a class="headerlink" href="#settextcolor" title="Permanent link">&para;</a></h4>
+<p>{chainable} {toggleable}
+<div class="highlight"><pre><span></span><code><span class="n">icon</span><span class="p">:</span><span class="n">setTextColor</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="n">iconState</span><span class="p">)</span>
+</code></pre></div>
+The color of the icon labels' text.</p>
+<hr />
 <h4 id="settextfont">setTextFont<a class="headerlink" href="#settextfont" title="Permanent link">&para;</a></h4>
 <p>{chainable} {toggleable}
 <div class="highlight"><pre><span></span><code><span class="n">icon</span><span class="p">:</span><span class="n">setTextFont</span><span class="p">(</span><span class="n">font</span><span class="p">,</span> <span class="n">fontWeight</span><span class="p">,</span> <span class="n">fontStyle</span><span class="p">,</span> <span class="n">iconState</span><span class="p">)</span>
@@ -1672,6 +1706,12 @@ Joins the dropdown of <code>parentIcon</code>. This is what <code>icon:setDropdo
 </code></pre></div>
 Creates a horizontal menu based upon the given array of icons. Pass an empty table <code>{}</code> to remove the menu. See <a href="https://1foreverhd.github.io/TopbarPlus/features/#menus">menus</a> for more details.</p>
 <hr />
+<h4 id="setfixedmenu">setFixedMenu<a class="headerlink" href="#setfixedmenu" title="Permanent link">&para;</a></h4>
+<p>{chainable}
+<div class="highlight"><pre><span></span><code><span class="n">icon</span><span class="p">:</span><span class="n">setFixedMenu</span><span class="p">(</span><span class="n">arrayOfIcons</span><span class="p">)</span>
+</code></pre></div>
+Creates a menu that is always selected and has its close button hidden. Pass an empty table <code>{}</code> to remove the menu. See <a href="https://1foreverhd.github.io/TopbarPlus/features/#menus">menus</a> for more details.</p>
+<hr />
 <h4 id="joinmenu">joinMenu<a class="headerlink" href="#joinmenu" title="Permanent link">&para;</a></h4>
 <p>{chainable}
 <div class="highlight"><pre><span></span><code><span class="n">icon</span><span class="p">:</span><span class="n">joinMenu</span><span class="p">(</span><span class="n">parentIcon</span><span class="p">)</span>
@@ -1686,7 +1726,7 @@ Unparents an icon from a parentIcon if it belongs to a dropdown or menu.</p>
 <hr />
 <h4 id="convertlabeltonumberspinner">convertLabelToNumberSpinner<a class="headerlink" href="#convertlabeltonumberspinner" title="Permanent link">&para;</a></h4>
 <p>{chainable}
-<div class="highlight"><pre><span></span><code><span class="n">icon</span><span class="p">:</span><span class="n">convertLabelToNumberSpinner</span><span class="p">(</span><span class="n">numberSpinner</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">icon</span><span class="p">:</span><span class="n">convertLabelToNumberSpinner</span><span class="p">(</span><span class="n">numberSpinner</span><span class="p">,</span> <span class="n">readyCallback</span><span class="p">)</span>
 </code></pre></div>
 Accepts a <a href="https://devforum.roblox.com/t/numberspinner-module/1105961">numberSpinner</a> and converts the icon's label into that spinner. For example:
 <div class="highlight"><pre><span></span><code><span class="n">Icon</span><span class="p">.</span><span class="n">new</span><span class="p">()</span>
@@ -1696,18 +1736,23 @@ Accepts a <a href="https://devforum.roblox.com/t/numberspinner-module/1105961">n
     <span class="p">:</span><span class="n">call</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="n">pointsIcon</span><span class="p">)</span>
         <span class="kd">local</span> <span class="n">NumberSpinner</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="n">ReplicatedStorage</span><span class="p">.</span><span class="n">NumberSpinner</span><span class="p">)</span>
         <span class="kd">local</span> <span class="n">numberSpinner</span> <span class="o">=</span> <span class="n">NumberSpinner</span><span class="p">.</span><span class="n">new</span><span class="p">()</span>
-        <span class="n">pointsIcon</span><span class="p">:</span><span class="n">convertLabelToNumberSpinner</span><span class="p">(</span><span class="n">numberSpinner</span><span class="p">)</span>
-        <span class="n">numberSpinner</span><span class="p">.</span><span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;LabelSpinner&quot;</span>
-        <span class="n">numberSpinner</span><span class="p">.</span><span class="n">Prefix</span> <span class="o">=</span> <span class="s2">&quot;$&quot;</span>
-        <span class="n">numberSpinner</span><span class="p">.</span><span class="n">Commas</span> <span class="o">=</span> <span class="kc">true</span>
-        <span class="n">numberSpinner</span><span class="p">.</span><span class="n">Decimals</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">numberSpinner</span><span class="p">.</span><span class="n">Duration</span> <span class="o">=</span> <span class="mf">0.25</span>
-        <span class="kr">while</span> <span class="kc">true</span> <span class="kr">do</span>
-            <span class="n">numberSpinner</span><span class="p">.</span><span class="n">Value</span> <span class="o">=</span> <span class="nb">math.random</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
-            <span class="n">task</span><span class="p">.</span><span class="n">wait</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-        <span class="kr">end</span>
+        <span class="n">pointsIcon</span><span class="p">:</span><span class="n">convertLabelToNumberSpinner</span><span class="p">(</span><span class="n">numberSpinner</span><span class="p">,</span> <span class="kr">function</span><span class="p">()</span>
+            <span class="n">numberSpinner</span><span class="p">.</span><span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;LabelSpinner&quot;</span>
+            <span class="n">numberSpinner</span><span class="p">.</span><span class="n">Prefix</span> <span class="o">=</span> <span class="s2">&quot;$&quot;</span>
+            <span class="n">numberSpinner</span><span class="p">.</span><span class="n">Commas</span> <span class="o">=</span> <span class="kc">true</span>
+            <span class="n">numberSpinner</span><span class="p">.</span><span class="n">Decimals</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">numberSpinner</span><span class="p">.</span><span class="n">Duration</span> <span class="o">=</span> <span class="mf">0.25</span>
+            <span class="kr">while</span> <span class="kc">true</span> <span class="kr">do</span>
+                <span class="n">numberSpinner</span><span class="p">.</span><span class="n">Value</span> <span class="o">=</span> <span class="nb">math.random</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+                <span class="n">task</span><span class="p">.</span><span class="n">wait</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="kr">end</span>
+        <span class="kr">end</span><span class="p">)</span>
     <span class="kr">end</span><span class="p">)</span>
 </code></pre></div></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Any changes to the NumberSpinner must be made within <code>readyCallback</code> otherwise you risk breaking the icon's appearance</p>
+</div>
 <hr />
 <h4 id="destroy">destroy<a class="headerlink" href="#destroy" title="Permanent link">&para;</a></h4>
 <p>{chainable}

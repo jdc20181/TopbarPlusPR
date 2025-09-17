@@ -400,6 +400,15 @@ type Methods = {
 			return nil :: any
 		end
 	),
+	setFixedMenu: typeof(
+		--[[
+			Creates a menu that is always selected and has it's close button hidden.
+			Pass an empty table <code>{}</code> to remove the menu.
+		]]
+		function(self: Icon, icons: { Icon }): Icon
+			return nil :: any
+		end
+	),
 	joinMenu: typeof(
 		--[[
 			Joins the menu of <code>parentIcon</code>.

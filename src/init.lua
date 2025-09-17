@@ -1040,10 +1040,11 @@ function Icon:setMenu(arrayOfIcons)
 	return self
 end
 
-function Icon:setFrozenMenu(arrayOfIcons)
+function Icon:setFixedMenu(arrayOfIcons)
 	self:freezeMenu(arrayOfIcons)
 	self:setMenu(arrayOfIcons)
 end
+Icon.setFrozenMenu = Icon.setFixedMenu
 
 function Icon:freezeMenu()
 	-- A frozen menu is a menu which is permanently locked in the

@@ -125,6 +125,35 @@ Icon.new()
 
 ------------------------------
 
+### Fixed Menus
+Fixed Menus are the same as normal menus, except forcefully opened (selected), with their close button hidden:
+
+```lua
+Icon.new()
+	:modifyTheme({"Menu", "MaxIcons", 3})
+	:setFixedMenu({
+		Icon.new()
+		:setLabel("Item 1")
+		,
+		Icon.new()
+		:setLabel("Item 2")
+		,
+		Icon.new()
+		:setLabel("Item 3")
+		,
+		Icon.new()
+		:setLabel("Item 4")
+		,
+		Icon.new()
+		:setLabel("Item 5")
+		,
+	})
+```
+
+<a><img src="https://i.imgur.com/LgJCj4X.gif" width="50%"/></a>
+
+------------------------------
+
 ### Modify Theme
 You can modify the appearance of an icon doing:
 ```lua
