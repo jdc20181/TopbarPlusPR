@@ -270,39 +270,44 @@ function Icon.new()
 
 	-- Button Clicked (for states "Selected" and "Deselected")
 	local clickRegion = self:getInstance("ClickRegion")
+	local hasUsedMouseButton1Click = false
+	local lastToggleTime = 0
+	local DEBOUNCE_TIME = 0.1 -- 100ms debounce to prevent rapid toggles
+
 	local function handleToggle()
 		if self.locked then
 			return
 		end
+
+		-- Debounce logic to prevent rapid toggling
+		local currentTime = tick()
+		if currentTime - lastToggleTime < DEBOUNCE_TIME then
+			return
+		end
+		lastToggleTime = currentTime
+
 		if self.isSelected then
 			self:deselect("User", self)
 		else
 			self:select("User", self)
 		end
 	end
-	local isTouchTapping = false
-	local isClicking = false
+
 	clickRegion.MouseButton1Click:Connect(function()
-		if isTouchTapping then
-			return
-		end
-		isClicking = true
-		task.delay(0.01, function()
-			isClicking = false
-		end)
+		hasUsedMouseButton1Click = true
 		handleToggle()
 	end)
+
 	clickRegion.TouchTap:Connect(function()
 		-- This resolves the bug report by @28Pixels:
 		-- https://devforum.roblox.com/t/topbarplus/1017485/1104
-		if isClicking then
-			return
+		-- Only use TouchTap if MouseButton1Click has never fired
+		-- This handles edge cases where ONLY TouchTap works
+		-- Also prevents double-toggle bug with multi-touch on mobile
+		-- Credit to @sayer80 for this fix
+		if not hasUsedMouseButton1Click then
+			handleToggle()
 		end
-		isTouchTapping = true
-		task.delay(0.01, function()
-			isTouchTapping = false
-		end)
-		handleToggle()
 	end)
 
 	-- Keys can be bound to toggle between Selected and Deselected
