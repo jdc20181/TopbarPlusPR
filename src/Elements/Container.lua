@@ -95,6 +95,7 @@ return function(Icon)
 	end)
 	screenGui.Name = "TopbarStandard"
 	screenGui.Enabled = true
+	screenGui.DisplayOrder = Icon.baseDisplayOrder
 	screenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	screenGui.IgnoreGuiInset = true
 	screenGui.ResetOnSpawn = false
@@ -121,6 +122,7 @@ return function(Icon)
 		holdersCenter.Size = UDim2.new(1, 0, 0, GuiService.TopbarInset.Height+ySizeOffset)
 	end
 	screenGuiCenter.Name = "TopbarCentered"
+	screenGuiCenter.DisplayOrder = Icon.baseDisplayOrder
 	screenGuiCenter.ScreenInsets = Enum.ScreenInsets.None
 	Icon.baseDisplayOrderChanged:Connect(function()
 		screenGuiCenter.DisplayOrder = Icon.baseDisplayOrder
@@ -132,17 +134,17 @@ return function(Icon)
 	
 	local screenGuiClipped = screenGui:Clone()
 	screenGuiClipped.Name = screenGuiClipped.Name.."Clipped"
-	screenGuiClipped.DisplayOrder += 1
+	screenGuiClipped.DisplayOrder = (Icon.baseDisplayOrder + 1)
 	Icon.baseDisplayOrderChanged:Connect(function()
-		screenGuiClipped.DisplayOrder = Icon.baseDisplayOrder + 1
+		screenGuiClipped.DisplayOrder = (Icon.baseDisplayOrder + 1)
 	end)
 	container[screenGuiClipped.Name] = screenGuiClipped
 	
 	local screenGuiCenterClipped = screenGuiCenter:Clone()
 	screenGuiCenterClipped.Name = screenGuiCenterClipped.Name.."Clipped"
-	screenGuiCenterClipped.DisplayOrder += 1
+	screenGuiCenterClipped.DisplayOrder = (Icon.baseDisplayOrder + 1)
 	Icon.baseDisplayOrderChanged:Connect(function()
-		screenGuiCenterClipped.DisplayOrder = Icon.baseDisplayOrder + 1
+		screenGuiCenterClipped.DisplayOrder = (Icon.baseDisplayOrder + 1)
 	end)
 	container[screenGuiCenterClipped.Name] = screenGuiCenterClipped
 	
